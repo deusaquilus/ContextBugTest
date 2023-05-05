@@ -3,28 +3,21 @@ package org.deusaquilus
 import kotlin.coroutines.startCoroutine
 
 class InContext
-class MyReciever<T> {
+class MyReciever {
     public suspend fun <R> MyOutput<R>.innerFun(): R = TODO()
 }
 class MyOutput<T>
-interface Bound
 
-class PairLite<A, B>
-
-public fun <T: Bound> select(block: suspend context(InContext) MyReciever<T>.() -> T): MyOutput<T> {
-    //val comboBlock: suspend MyReciever<T>.() -> T = { block(InContext(), this) }
-    return TODO()
-}
+public fun <T> select(block: suspend context(InContext) MyReciever.() -> T): MyOutput<T> = TODO()
 
 class A
-class B
 
 public fun use() {
-    val out:  MyOutput<PairLite<A, B>> = TODO()
+    val out:  MyOutput<A> = TODO()
 
     val out1 =
         select {
-            val x:  PairLite<A, B> = out.innerFun()
+            val x:  A = out.innerFun()
             TODO()
         }
 }
