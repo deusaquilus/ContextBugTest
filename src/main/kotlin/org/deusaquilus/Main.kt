@@ -11,8 +11,9 @@ public fun caller(block: suspend context(InContext) MyReciever.() -> Int): MyOut
 
 
 fun main(args: Array<String>) {
-    val out1 =
-        caller {
-            MyOutput().innerFun()
-        }
+    val out1 = caller {  MyOutput().innerFun() }
+    // Also does not work:
+    //val out2 = with (InContext()) { caller {  MyOutput().innerFun() } }
+    // Also does not work:
+    //val out3 = caller { with (InContext()) { MyOutput().innerFun() } }
 }
