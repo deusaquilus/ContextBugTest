@@ -2,6 +2,8 @@ package org.deusaquilus
 
 class InContext
 class MyReciever {
+    // Add context here and compile-time issue goes away:
+    //context(InContext)
     public suspend fun MyOutput.innerFun(): Int = 123
 }
 class MyOutput
